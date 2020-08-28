@@ -1,0 +1,9 @@
+# gpt2 models
+*.bin
+# c program for inf from https://bellard.org/nncp/gpt2tc.html
+gpt2tc
+gpt2tc.exe
+gpt2vocab.txt
+libwinpthread-1.dll
+# telegram API key
+telegramkey.txt
