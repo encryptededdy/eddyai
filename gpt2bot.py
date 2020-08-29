@@ -40,6 +40,16 @@ def sid(update, context):
         gpt2tc(parse_to_query(update), "345M", "gpt2_sidmedium.bin"),
         quote = True)
 
+def lauren(update, context):
+    update.message.reply_text(
+        gpt2tc(parse_to_query(update), "117M", "gpt2_laurensmall.bin"),
+        quote = True)
+
+def thomas(update, context):
+    update.message.reply_text(
+        gpt2tc(parse_to_query(update), "117M", "gpt2_thomassmall.bin"),
+        quote = True)
+
 def mohan(update, context):
     update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_mohanmedium.bin"),
@@ -71,6 +81,8 @@ updater.dispatcher.add_handler(CommandHandler('mohan', mohan))
 updater.dispatcher.add_handler(CommandHandler('edward', edward))
 updater.dispatcher.add_handler(CommandHandler('terran', terran))
 updater.dispatcher.add_handler(CommandHandler('sid', sid))
+updater.dispatcher.add_handler(CommandHandler('lauren', lauren))
+updater.dispatcher.add_handler(CommandHandler('thomas', thomas))
 updater.dispatcher.add_handler(CommandHandler('austin', austin))
 updater.dispatcher.add_handler(CommandHandler('generic', generic))
 updater.dispatcher.add_handler(CommandHandler('henry', henry))
