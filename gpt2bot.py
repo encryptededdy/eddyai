@@ -40,6 +40,11 @@ def sid(update, context):
         gpt2tc(parse_to_query(update), "345M", "gpt2_sidmedium.bin"),
         quote = True)
 
+def jono(update, context):
+    update.message.reply_text(
+        gpt2tc(parse_to_query(update), "345M", "gpt2_jonomedium.bin"),
+        quote = True)
+
 def lauren(update, context):
     update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_laurensmall.bin"),
@@ -48,6 +53,11 @@ def lauren(update, context):
 def thomas(update, context):
     update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_thomassmall.bin"),
+        quote = True)
+
+def yige(update, context):
+    update.message.reply_text(
+        gpt2tc(parse_to_query(update), "117M", "gpt2_yigesmall.bin"),
         quote = True)
 
 def mohan(update, context):
@@ -70,6 +80,16 @@ def henry(update, context):
         gpt2tc(parse_to_query(update), "117M", "gpt2_henrysmall.bin"),
         quote = True)
 
+def logan(update, context):
+    update.message.reply_text(
+        gpt2tc(parse_to_query(update), "117M", "gpt2_logansmall.bin"),
+        quote = True)
+
+def hive(update, context):
+    update.message.reply_text(
+        gpt2tc(parse_to_query(update), "345M", "gpt2_hivemedium.bin"),
+        quote = True)
+
 key = ''
 with open ("telegramkey.txt", "r") as config:
     key = config.readlines()[0]
@@ -82,10 +102,14 @@ updater.dispatcher.add_handler(CommandHandler('edward', edward))
 updater.dispatcher.add_handler(CommandHandler('terran', terran))
 updater.dispatcher.add_handler(CommandHandler('sid', sid))
 updater.dispatcher.add_handler(CommandHandler('lauren', lauren))
+updater.dispatcher.add_handler(CommandHandler('yige', yige))
+updater.dispatcher.add_handler(CommandHandler('jono', jono))
 updater.dispatcher.add_handler(CommandHandler('thomas', thomas))
 updater.dispatcher.add_handler(CommandHandler('austin', austin))
 updater.dispatcher.add_handler(CommandHandler('generic', generic))
 updater.dispatcher.add_handler(CommandHandler('henry', henry))
+updater.dispatcher.add_handler(CommandHandler('logan', logan))
+updater.dispatcher.add_handler(CommandHandler('hive', hive))
 
 updater.start_polling()
 updater.idle()
