@@ -87,6 +87,11 @@ def logan(update, context):
 
 def hive(update, context):
     update.message.reply_text(
+        gpt2tc(parse_to_query(update), "345M", "gpt2_hive2medium.bin"),
+        quote = True)
+
+def hivelegacy(update, context):
+    update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_hivemedium.bin"),
         quote = True)
 
@@ -110,6 +115,7 @@ updater.dispatcher.add_handler(CommandHandler('generic', generic))
 updater.dispatcher.add_handler(CommandHandler('henry', henry))
 updater.dispatcher.add_handler(CommandHandler('logan', logan))
 updater.dispatcher.add_handler(CommandHandler('hive', hive))
+updater.dispatcher.add_handler(CommandHandler('hivelegacy', hivelegacy))
 
 updater.start_polling()
 updater.idle()
