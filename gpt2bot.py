@@ -87,12 +87,12 @@ def logan(update, context):
 
 def hive(update, context):
     update.message.reply_text(
-        gpt2tc(parse_to_query(update), "345M", "gpt2_hive2medium.bin"),
+        gpt2tc(parse_to_query(update), "774M", "gpt2_hive_2024Jan.bin"),
         quote = True)
 
 def hivelegacy(update, context):
     update.message.reply_text(
-        gpt2tc(parse_to_query(update), "345M", "gpt2_hivemedium.bin"),
+        gpt2tc(parse_to_query(update), "345M", "gpt2_hive2medium.bin"),
         quote = True)
 
 key = ''
