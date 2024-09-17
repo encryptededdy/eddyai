@@ -7,3 +7,5 @@ gpt2vocab.txt
 libwinpthread-1.dll
 # telegram API key
 telegramkey.txt
+*.webm
+__pycache__
