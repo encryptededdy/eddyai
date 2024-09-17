@@ -1,7 +1,6 @@
 from telegram.ext import ApplicationBuilder, CommandHandler
 import subprocess
 from telegram import Update
-from tiktokbot import TikTokVoice
 
 gpt2tcThreads = 1
 allowedChars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!+-?,.' *:;()"
