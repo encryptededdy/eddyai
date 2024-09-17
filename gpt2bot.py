@@ -5,8 +5,6 @@ from telegram import Update
 gpt2tcThreads = 1
 allowedChars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!+-?,.' *:;()"
 
-tik_tok_runner = TikTokVoice()
-
 
 def filtertext(text):
     return ''.join(filter(lambda x: x in allowedChars, text.replace('\n', ' ').strip()))
