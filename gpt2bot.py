@@ -4,7 +4,7 @@ from telegram import Update
 from tiktokbot import TikTokVoice
 
 gpt2tcThreads = 1
-allowedChars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!+-?,.' "
+allowedChars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!+-?,.' *:;()"
 
 tik_tok_runner = TikTokVoice()
 
@@ -30,7 +30,8 @@ async def hello(update, context):
         'Hello {}'.format(update.message.from_user.first_name))
 
 
-async def parse_to_query(update):
+def parse_to_query(update):
+    print(update.message.text)
     split = update.message.text.split(' ', 1)
     return split[1] if len(split) > 1 else ''
 
@@ -38,83 +39,97 @@ async def parse_to_query(update):
 async def austin(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_austinmedium.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def terran(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_terranmedium.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def sid(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_sidmedium.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def jono(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_jonomedium.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def lauren(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_laurensmall.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def thomas(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_thomassmall.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def yige(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_yigesmall.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def mohan(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_mohanmedium.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def edward(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_edwardmedium.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def generic(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_genericmedium.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def henry(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_henrysmall.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def logan(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_logansmall.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 async def hive(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "774M", "gpt2_hive_2024Jan.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def hivelegacy(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_hive2medium.bin"),
+        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
