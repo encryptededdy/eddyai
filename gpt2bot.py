@@ -106,16 +106,15 @@ async def logan(update, context):
         gpt2tc(parse_to_query(update), "117M", "gpt2_logansmall.bin"),
         quote=True)
 
-
 async def hive(update, context):
     await update.message.reply_text(
-        gpt2tc(parse_to_query(update), "345M", "gpt2_hive2medium.bin"),
+        gpt2tc(parse_to_query(update), "774M", "gpt2_hive_2024Jan.bin"),
         quote=True)
 
 
 async def hivelegacy(update, context):
     await update.message.reply_text(
-        gpt2tc(parse_to_query(update), "345M", "gpt2_hivemedium.bin"),
+        gpt2tc(parse_to_query(update), "345M", "gpt2_hive2medium.bin"),
         quote=True)
 
 
