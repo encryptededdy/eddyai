@@ -1,10 +1,9 @@
 from telegram.ext import ApplicationBuilder, CommandHandler
 import subprocess
 from telegram import Update
-from tiktokbot import TikTokVoice
 
 gpt2tcThreads = 1
-allowedChars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!+-?,.' "
+allowedChars = "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!+-?,.' *:;()"
 
 tik_tok_runner = TikTokVoice()
 
@@ -30,7 +29,7 @@ async def hello(update, context):
         'Hello {}'.format(update.message.from_user.first_name))
 
 
-async def parse_to_query(update):
+def parse_to_query(update):
     split = update.message.text.split(' ', 1)
     return split[1] if len(split) > 1 else ''
 
@@ -118,25 +117,6 @@ async def hivelegacy(update, context):
         quote=True)
 
 
-async def tiktok(update: Update, context):
-    try:
-        query = " ".join(update.message.text.split(" ")[1:])
-        if (len(query) == 0):
-            await update.message.reply_text("Please provide a query", quote=True)
-            return
-
-        if (len(query) > 400):
-            await update.message.reply_text(
-                "Query too long. Max 400 chars", quote=True)
-            return
-
-        tik_tok_runner.generate(query)
-        # update.message.reply_voice sends as a file not a voice message for some reason so using the long format command
-        await context.bot.send_voice(update.effective_chat.id, open('tiktok.webm', 'rb'), reply_to_message_id=update.message.message_id)
-    except Exception as e:
-        print(e)
-        await update.message.reply_text("Something went wrong, sorry :(", quote=True)
-
 key = ''
 with open("telegramkey.txt", "r") as config:
     key = config.readlines()[0]
@@ -161,7 +141,6 @@ def main():
     application.add_handler(CommandHandler('logan', logan))
     application.add_handler(CommandHandler('hive', hive))
     application.add_handler(CommandHandler('hivelegacy', hivelegacy))
-    application.add_handler(CommandHandler('tiktok', tiktok))
 
     application.run_polling()
 
