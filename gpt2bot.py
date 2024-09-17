@@ -31,7 +31,6 @@ async def hello(update, context):
 
 
 def parse_to_query(update):
-    print(update.message.text)
     split = update.message.text.split(' ', 1)
     return split[1] if len(split) > 1 else ''
 
@@ -39,118 +38,85 @@ def parse_to_query(update):
 async def austin(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_austinmedium.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def terran(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_terranmedium.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def sid(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_sidmedium.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def jono(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_jonomedium.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def lauren(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_laurensmall.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def thomas(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_thomassmall.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def yige(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_yigesmall.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def mohan(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_mohanmedium.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def edward(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_edwardmedium.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def generic(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_genericmedium.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def henry(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_henrysmall.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def logan(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "117M", "gpt2_logansmall.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 async def hive(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "774M", "gpt2_hive_2024Jan.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
 
 async def hivelegacy(update, context):
     await update.message.reply_text(
         gpt2tc(parse_to_query(update), "345M", "gpt2_hive2medium.bin"),
-        message_thread_id=update.message.message_thread_id,
         quote=True)
 
-
-async def tiktok(update: Update, context):
-    try:
-        query = " ".join(update.message.text.split(" ")[1:])
-        if (len(query) == 0):
-            await update.message.reply_text("Please provide a query", quote=True)
-            return
-
-        if (len(query) > 400):
-            await update.message.reply_text(
-                "Query too long. Max 400 chars", quote=True)
-            return
-
-        tik_tok_runner.generate(query)
-        # update.message.reply_voice sends as a file not a voice message for some reason so using the long format command
-        await context.bot.send_voice(update.effective_chat.id, open('tiktok.webm', 'rb'), reply_to_message_id=update.message.message_id)
-    except Exception as e:
-        print(e)
-        await update.message.reply_text("Something went wrong, sorry :(", quote=True)
 
 key = ''
 with open("telegramkey.txt", "r") as config:
@@ -176,7 +142,6 @@ def main():
     application.add_handler(CommandHandler('logan', logan))
     application.add_handler(CommandHandler('hive', hive))
     application.add_handler(CommandHandler('hivelegacy', hivelegacy))
-    application.add_handler(CommandHandler('tiktok', tiktok))
 
     application.run_polling()
 
